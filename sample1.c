@@ -15,4 +15,3 @@ int main() {
     printf("Program continued running\n");
     return 0;
 }
-
