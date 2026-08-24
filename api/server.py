@@ -4,9 +4,12 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-binarypath = os.path.abspath(os.environ.get("vigilbinary", "./main"))
 
-@app.route("/scan", methods=["POST"])
+binarypath = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "main")
+)
+
+@app.route("/api/server/scan", methods=["POST"])
 def scan():
     if "script" not in request.files:
         return jsonify(error="No script uploaded"), 400
@@ -44,6 +47,3 @@ def scan():
 
     finally:
         shutil.rmtree(work_dir, ignore_errors=True)
-
-if __name__ == "__main__":
-    app.run(port=8080)
