@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-binarypath = os.environ.get("vigilbinary", "./main")
+binarypath = os.path.abspath(os.environ.get("vigilbinary", "./main"))
 
 @app.route("/scan", methods=["POST"])
 def scan():
