@@ -50,3 +50,33 @@ function renderEntry(entry) {
   document.getElementById("alert").textContent = alert;
   document.getElementById("burst").textContent = burst;
 }
+
+const scan_url = "http://localhost:8080/scan";
+
+async function submitUpload() {
+  const file_input = document.getElementById("upload");
+
+  if (!file_input.files.length) {
+    return;
+  }
+
+  resetFeed();
+
+  const formData = new FormData();
+  formData.append("script", file_input.files[0]);
+
+  const res = await fetch(scan_url, {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+
+  data.entries.forEach(entry => {
+    renderEntry(entry);
+  });
+}
+
+document
+  .getElementById("submit")
+  .addEventListener("click", submitUpload);
