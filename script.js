@@ -1,5 +1,16 @@
 let alert = 0;
 let burst = 0;
+let currentMode = "enforce";
+
+function setMode(mode) {
+  currentMode = mode;
+
+  document.querySelectorAll(".modebtn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.mode === mode);
+  });
+
+  document.getElementById("mode").textContent = mode;
+}
 
 function fmtTime(unixSeconds) {
   return new Date(unixSeconds * 1000).toLocaleTimeString();
@@ -64,6 +75,7 @@ async function submitUpload() {
 
   const formData = new FormData();
   formData.append("script", file_input.files[0]);
+  formData.append("enforce", currentMode === "enforce" ? "true" : "false");
 
   const res = await fetch(scan_url, {
     method: "POST",
@@ -80,3 +92,7 @@ async function submitUpload() {
 document
   .getElementById("submit")
   .addEventListener("click", submitUpload);
+
+document.querySelectorAll(".modebtn").forEach(btn => {
+  btn.addEventListener("click", () => setMode(btn.dataset.mode));
+});

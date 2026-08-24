@@ -12,9 +12,12 @@
   <input type="file" id="upload">
   <p>Or download any of the sample scripts from https://github.com/mittal-ayushi/strace and upload them to test </p>
   <button id="submit">Scan Script</button>
-  <button></button>
-  <button></button>
-  <button></button>
+  <h1></h1>
+  <h2>Mode</h2>
+  <p>Enforce mode kills the target on the first matching alert. Monitor mode only logs.</p>
+  <button id="enforce" class="modebtn active" data-mode="enforce">Enforce</button>
+  <button id="monitor" class="modebtn" data-mode="monitor">Monitor</button>
+  <p>Current mode: <span id="mode">enforce</span></p>
   <h1></h1>
 
   <h2>Status</h2>
