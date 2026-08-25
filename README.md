@@ -72,6 +72,3 @@ It also writes everything in a file named alerts.json so it can be easier to ana
 
 ## Note
 You need strace installed on your machine for any of thisgit to work since thats what VIGIL runs on in reality.
-
-
-You need strace installed on your machine for any of this to work since thats what VIGIL runs on in reality.
