@@ -62,7 +62,7 @@ function renderEntry(entry) {
   document.getElementById("burst").textContent = burst;
 }
 
-const scan_url = "/api/server/scan";
+const scan_url = "http://localhost:8080/scan";
 
 async function submitUpload() {
   const file_input = document.getElementById("upload");
