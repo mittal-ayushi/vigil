@@ -1,9 +1,9 @@
 FROM python:3.11-slim
 
-# strace + gcc (to build the watcher binary) + bash (target for scanned scripts)
+# strace + build-essential (gcc AND the libc headers like stdio.h) + bash (target for scanned scripts)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     strace \
-    gcc \
+    build-essential \
     bash \
     && rm -rf /var/lib/apt/lists/*
 
